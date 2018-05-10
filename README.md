@@ -1,2 +1,2 @@
 # Game-platform
-just a exercise
+just an exercise
