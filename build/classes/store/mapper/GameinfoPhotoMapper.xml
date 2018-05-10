@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="store.mapper.GameinfoPhotoMapper" >
+  <resultMap id="gameInfoAndPhoto" type="store.pojo.infoAndPhoto" >
+    <id column="G_ID" property="gId" jdbcType="DECIMAL" />
+    <result column="G_NAME" property="gName" jdbcType="VARCHAR" />
+    <result column="G_PHOTO" property="gPhoto" jdbcType="VARCHAR" />
+    <result column="G_CONTEXT" property="gContext" jdbcType="VARCHAR" />
+    <result column="G_PUBLISHER" property="gPublisher" jdbcType="VARCHAR" />
+    <result column="G_STATUS" property="gStatus" jdbcType="DECIMAL" />
+    <result column="PUBLISH_DATE" property="publishDate" jdbcType="DATE" />
+    <result column="g_price" property="gPrice" jdbcType="DECIMAL" />
+    
+    <association property="infoPhoto" javaType="store.pojo.GameinfoPhoto">
+    	<id column="p_id" property="pId" javaType="INTEGER"/>
+    	<result column="game_id" property="gameId" jdbcType="DECIMAL" />
+    	<result column="small_a" property="smallA" jdbcType="VARCHAR" />
+    	<result column="small_b" property="smallB" jdbcType="VARCHAR" />
+    	<result column="small_c" property="smallC" jdbcType="VARCHAR" />
+    	<result column="small_d" property="smallD" jdbcType="VARCHAR" />
+    	<result column="small_e" property="smallE" jdbcType="VARCHAR" />
+    	<result column="big_a" property="bigA" jdbcType="VARCHAR" />
+    	<result column="big_b" property="bigB" jdbcType="VARCHAR" />
+    	<result column="big_c" property="bigC" jdbcType="VARCHAR" />
+    	<result column="big_d" property="bigD" jdbcType="VARCHAR" />
+    	<result column="big_e" property="bigE" jdbcType="VARCHAR" />
+    	<result column="p_header" property="pHeader" jdbcType="VARCHAR" />
+    	
+    	
+    	
+    </association>
+  </resultMap>
+  <select id="queryGameInfoAndPhoto" parameterType="int" resultMap="gameInfoAndPhoto">
+  	select info.*,photo.*
+    from GAMEINFO info left join GAMEINFO_PHOTO photo
+    on info.g_id=photo.game_id
+    where g_id=${value}
+
+  	
+  </select>
+  
+</mapper>

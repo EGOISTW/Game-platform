@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="store.mapper.GcarMapper" >
+  <resultMap id="BaseResultMap" type="store.pojo.Gcar" >
+    <id column="C_ID" property="cId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="GAME_ID" property="gameId" jdbcType="DECIMAL" />
+    <result column="GAME_NAME" property="gameName" jdbcType="VARCHAR" />
+    <result column="C_PRICE" property="cPrice" jdbcType="DECIMAL" />
+    <result column="C_GAMEPHOTO" property="cGamephoto" jdbcType="VARCHAR" />
+    <result column="C_TIME" property="cTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, USER_ID, GAME_ID, GAME_NAME, C_PRICE, C_GAMEPHOTO, C_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="store.pojo.GcarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GCAR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from GCAR
+    where C_ID = #{cId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from GCAR
+    where C_ID = #{cId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="store.pojo.GcarExample" >
+    delete from GCAR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="store.pojo.Gcar" >
+    insert into GCAR (C_ID, USER_ID, GAME_ID, 
+      GAME_NAME, C_PRICE, C_GAMEPHOTO, 
+      C_TIME)
+    values (GCAR_SEQUENCE.Nextval, #{userId,jdbcType=DECIMAL}, #{gameId,jdbcType=DECIMAL}, 
+      #{gameName,jdbcType=VARCHAR}, #{cPrice,jdbcType=DECIMAL}, #{cGamephoto,jdbcType=VARCHAR}, 
+      #{cTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="store.pojo.Gcar" >
+    insert into GCAR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        C_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="gameId != null" >
+        GAME_ID,
+      </if>
+      <if test="gameName != null" >
+        GAME_NAME,
+      </if>
+      <if test="cPrice != null" >
+        C_PRICE,
+      </if>
+      <if test="cGamephoto != null" >
+        C_GAMEPHOTO,
+      </if>
+      <if test="cTime != null" >
+        C_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameName != null" >
+        #{gameName,jdbcType=VARCHAR},
+      </if>
+      <if test="cPrice != null" >
+        #{cPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cGamephoto != null" >
+        #{cGamephoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null" >
+        #{cTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="store.pojo.GcarExample" resultType="java.lang.Integer" >
+    select count(*) from GCAR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update GCAR
+    <set >
+      <if test="record.cId != null" >
+        C_ID = #{record.cId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gameId != null" >
+        GAME_ID = #{record.gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gameName != null" >
+        GAME_NAME = #{record.gameName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPrice != null" >
+        C_PRICE = #{record.cPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cGamephoto != null" >
+        C_GAMEPHOTO = #{record.cGamephoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTime != null" >
+        C_TIME = #{record.cTime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update GCAR
+    set C_ID = #{record.cId,jdbcType=DECIMAL},
+      USER_ID = #{record.userId,jdbcType=DECIMAL},
+      GAME_ID = #{record.gameId,jdbcType=DECIMAL},
+      GAME_NAME = #{record.gameName,jdbcType=VARCHAR},
+      C_PRICE = #{record.cPrice,jdbcType=DECIMAL},
+      C_GAMEPHOTO = #{record.cGamephoto,jdbcType=VARCHAR},
+      C_TIME = #{record.cTime,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="store.pojo.Gcar" >
+    update GCAR
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameId != null" >
+        GAME_ID = #{gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameName != null" >
+        GAME_NAME = #{gameName,jdbcType=VARCHAR},
+      </if>
+      <if test="cPrice != null" >
+        C_PRICE = #{cPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cGamephoto != null" >
+        C_GAMEPHOTO = #{cGamephoto,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null" >
+        C_TIME = #{cTime,jdbcType=DATE},
+      </if>
+    </set>
+    where C_ID = #{cId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="store.pojo.Gcar" >
+    update GCAR
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      GAME_ID = #{gameId,jdbcType=DECIMAL},
+      GAME_NAME = #{gameName,jdbcType=VARCHAR},
+      C_PRICE = #{cPrice,jdbcType=DECIMAL},
+      C_GAMEPHOTO = #{cGamephoto,jdbcType=VARCHAR},
+      C_TIME = #{cTime,jdbcType=DATE}
+    where C_ID = #{cId,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="store.mapper.GameinfoMapper" >
+  <resultMap id="BaseResultMap" type="store.pojo.Gameinfo" >
+    <id column="G_ID" property="gId" jdbcType="DECIMAL" />
+    <result column="G_NAME" property="gName" jdbcType="VARCHAR" />
+    <result column="G_PHOTO" property="gPhoto" jdbcType="VARCHAR" />
+    <result column="G_CONTEXT" property="gContext" jdbcType="VARCHAR" />
+    <result column="G_PUBLISHER" property="gPublisher" jdbcType="VARCHAR" />
+    <result column="G_STATUS" property="gStatus" jdbcType="DECIMAL" />
+    <result column="PUBLISH_DATE" property="publishDate" jdbcType="DATE" />
+    <result column="g_price" property="gPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    G_ID, G_NAME, G_PHOTO, G_CONTEXT, G_PUBLISHER, G_STATUS, PUBLISH_DATE, g_price
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="store.pojo.GameinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GAMEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="int" >
+    select 
+    <include refid="Base_Column_List" />
+    from GAMEINFO
+    where G_ID = #{gId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="int" >
+    delete from GAMEINFO
+    where G_ID = #{gId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="store.pojo.GameinfoExample" >
+    delete from GAMEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="store.pojo.Gameinfo" >
+    insert into GAMEINFO 
+    values (gameinfo_sequence.nextval, #{gName,jdbcType=VARCHAR}, #{gPhoto,jdbcType=VARCHAR}, 
+      #{gContext,jdbcType=VARCHAR}, #{gPublisher,jdbcType=VARCHAR}, #{gStatus,jdbcType=DECIMAL}, 
+      #{publishDate,jdbcType=DATE},#{gPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="store.pojo.Gameinfo" >
+    insert into GAMEINFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        G_ID,
+      </if>
+      <if test="gName != null" >
+        G_NAME,
+      </if>
+      <if test="gPhoto != null" >
+        G_PHOTO,
+      </if>
+      <if test="gContext != null" >
+        G_CONTEXT,
+      </if>
+      <if test="gPublisher != null" >
+        G_PUBLISHER,
+      </if>
+      <if test="gStatus != null" >
+        G_STATUS,
+      </if>
+      <if test="publishDate != null" >
+        PUBLISH_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        #{gId,jdbcType=DECIMAL},
+      </if>
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPhoto != null" >
+        #{gPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="gContext != null" >
+        #{gContext,jdbcType=VARCHAR},
+      </if>
+      <if test="gPublisher != null" >
+        #{gPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="gStatus != null" >
+        #{gStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="publishDate != null" >
+        #{publishDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="store.pojo.GameinfoExample" resultType="java.lang.Integer" >
+    select count(*) from GAMEINFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update GAMEINFO
+    <set >
+      <if test="record.gId != null" >
+        G_ID = #{record.gId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gName != null" >
+        G_NAME = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gPhoto != null" >
+        G_PHOTO = #{record.gPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gContext != null" >
+        G_CONTEXT = #{record.gContext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gPublisher != null" >
+        G_PUBLISHER = #{record.gPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gStatus != null" >
+        G_STATUS = #{record.gStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.publishDate != null" >
+        PUBLISH_DATE = #{record.publishDate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update GAMEINFO
+    set G_ID = #{record.gId,jdbcType=DECIMAL},
+      G_NAME = #{record.gName,jdbcType=VARCHAR},
+      G_PHOTO = #{record.gPhoto,jdbcType=VARCHAR},
+      G_CONTEXT = #{record.gContext,jdbcType=VARCHAR},
+      G_PUBLISHER = #{record.gPublisher,jdbcType=VARCHAR},
+      G_STATUS = #{record.gStatus,jdbcType=DECIMAL},
+      PUBLISH_DATE = #{record.publishDate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="store.pojo.Gameinfo" >
+    update GAMEINFO
+    <set >
+      <if test="gName != null" >
+        G_NAME = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPhoto != null" >
+        G_PHOTO = #{gPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="gContext != null" >
+        G_CONTEXT = #{gContext,jdbcType=VARCHAR},
+      </if>
+      <if test="gPublisher != null" >
+        G_PUBLISHER = #{gPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="gStatus != null" >
+        G_STATUS = #{gStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="publishDate != null" >
+        PUBLISH_DATE = #{publishDate,jdbcType=DATE},
+      </if>
+    </set>
+    where G_ID = #{gId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="store.pojo.Gameinfo" >
+    update GAMEINFO
+    set G_NAME = #{gName,jdbcType=VARCHAR},
+      G_PHOTO = #{gPhoto,jdbcType=VARCHAR},
+      G_CONTEXT = #{gContext,jdbcType=VARCHAR},
+      G_PUBLISHER = #{gPublisher,jdbcType=VARCHAR},
+      G_STATUS = #{gStatus,jdbcType=DECIMAL},
+      PUBLISH_DATE = #{publishDate,jdbcType=DATE},
+      g_price=#{gPrice,jdbcType=DECIMAL}
+    where G_ID = #{gId,jdbcType=DECIMAL}
+  </update>
+</mapper>

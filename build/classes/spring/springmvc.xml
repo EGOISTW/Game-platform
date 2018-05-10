@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+            http://www.springframework.org/schema/context   
+            http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+            http://www.springframework.org/schema/mvc  
+            http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+            http://www.springframework.org/schema/util  
+            http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+            
+    <!-- 校验器 -->       
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    	<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+    	<property name="validationMessageSource" ref="messageSource"></property>
+    	
+    </bean> 
+    
+    <!-- 校验错误信息配置文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<property name="basenames">
+    		<list>
+    			<value>classpath:CustomValidationMessages</value>
+    		</list>
+    	
+    	</property>
+    
+    </bean>
+    
+	<!--     时间类型转换器 -->
+    <mvc:annotation-driven conversion-service="conversionService" validator="validator"></mvc:annotation-driven>
+    
+    
+    
+    
+    
+    <!-- 加了类型转换器，静态资源 使用此种方法解析
+    	 它的意思就是没有映射到的URL交给默认的web容器中的servlet进行处理：
+     -->
+    <mvc:default-servlet-handler/>
+            
+<!--    	静态资源解析  （加入了时间转换器后，使用web容器来解析静态资源，此方法不可用）          -->
+<!-- 	<mvc:resources location="/js/" mapping="/js/**"/> -->
+<!-- 	<mvc:resources location="/images/" mapping="/images/**"/> -->
+<!-- 	<mvc:resources location="/css/" mapping="/css/**"/>	 -->
+<!-- 时间转换器配置 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="store.DateConverter.DateConverter"></bean>
+			</list>
+		</property>
+	</bean>
+    
+	
+<!-- 拦截器	 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/user/register/**"/>
+			<bean class="store.interceptor.CheckUserLogin"></bean>
+		
+		</mvc:interceptor>
+	
+	</mvc:interceptors>
+	
+<!-- 支持文件上传 --> 
+<!-- 	<bean id="multipartResolver" -->
+<!-- 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+<!-- 		<property name="maxUploadSize" value="104857600" />1024*1024*5=5MB -->
+<!-- 		<property name="maxInMemorySize" value="4096" /> -->
+<!-- 		<property name="defaultEncoding" value="UTF-8"></property> -->
+<!-- 	</bean> -->
+	
+	
+	
+	
+	<!-- 映射器自动加载 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- controller包内容自动扫描 -->
+	<context:component-scan base-package="store.controller"></context:component-scan>
+	
+	<!-- 视图名自动控制 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	
+	</bean>	
+	
+</beans>

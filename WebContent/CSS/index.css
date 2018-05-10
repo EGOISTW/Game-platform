@@ -1,0 +1,560 @@
+/*
+* @Author: admin
+* @Date:   2017-12-01 14:25:12
+* @Last Modified by:   同
+* @Last Modified time: 2017-12-20 11:09:09
+*/
+*{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	text-decoration: none;
+
+
+}
+body{
+	font-size: 14px;
+	color: #b8b6b4;
+	background: url(../images/colored_body_top2.png) center top no-repeat #1b2838;
+	height:auto;
+	position:relative;
+	min-height: 100%;
+}
+a{
+	color:#c6d4df;
+}
+/* 头部导航栏样式 */
+.header{
+	min-width: 940px;
+	background-color: #171a21;
+	font-size: 14px;
+	color: #b8b6b4;
+}
+.header .content{
+	width: 940px;
+	height: 104px;
+	margin:0px auto;
+	position:relative;
+	right:-90px;
+
+}
+.toplogo{
+	padding-top: 30px;
+	
+	float: left;
+
+
+
+}
+.menulist{
+	float: left;
+	padding-top:43px;
+
+
+}
+.menulist a{
+	padding-left: 7px;
+	color: #b8b6b4;
+
+}
+.loginmenu{
+	
+	float: right;
+	padding-top:10px;
+}
+.loginmenu span{
+	padding-left:7px;
+}
+.loginmenu a{
+	padding-left:7px;
+	color: #b8b6b4;
+
+}
+/* 内容头div */
+.container{
+	min-width:972px;
+	min-height:400px;
+	
+}
+.container .top{
+	margin:0px auto;
+	padding-left: 235px;
+	width:940px;
+	position:relative;
+}
+
+/* 侧边栏样式 */
+.gutter{
+	width: 210px;
+	position:absolute;
+	display:block;
+	overflow: hidden;
+	left:0px;
+}
+.news_items a{
+	display: block;
+	color:#66c0f4;
+}
+.type_items a{
+	display: block;
+	color:#66c0f4;
+
+}
+
+.hot_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -80px 0px;
+
+}
+.new_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -96px 0px;
+
+}
+.newgame_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -112px 0px;
+
+}
+.atonce_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -128px 0px;
+
+}
+.sale_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -144px 0px;
+
+}
+.vr_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -160px 0px;
+
+}
+.contorller_items{
+	background-image: url(../images/store_menu_icons.png);
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	display:inline-block;
+	background-position: -176px 0px;
+
+}
+
+/* 商店导航栏样式 */
+.sotre_header{
+	height: 66px;
+	background-color:transparent;
+	margin-bottom:-8px;
+	padding-top: 24px;
+}
+.nav_area{
+	height: 35px;
+	background:rgba( 62, 126, 167, 0.8);
+	padding-left: 10px;
+	border:1px solid black;
+
+
+}
+
+/* 商店导航鼠标滑动下拉 */
+.tab_pull{
+	display:inline-block;
+	cursor: pointer;
+	border-right:1px solid black;
+	
+
+}
+.tab_pull a{
+	line-height: 34px;
+	text-align: center;
+}
+.tab_pull span{
+	display:inline-block;
+	width: 19px;
+	height: 12px;
+
+	background-image:url(../images/btn_arrow_down_padded_white.png);
+}
+
+/* 显示登录用户 */
+.login_username{
+	float: right;
+	line-height: 34px;
+	text-align: center;
+
+}
+
+/* 底部 */
+/* 垫片 */
+.footspace{
+	height: 377px;
+}
+.footer{
+	position:absolute;
+	background-color:#12212e;
+	padding:16px 0 60px 0;
+	bottom: 0;
+	left:0;
+	right:0;
+
+}
+.foot_content{
+	padding-left:142px;
+	margin:0px auto;
+	width:940px;
+}
+
+.nav_back{
+	background-color:rgba( 103, 193, 245, 0.2 );
+	margin-left: 10px;
+	border-radius: 2px;
+	height:30px;
+	display:inline-block;
+	
+
+}
+.nav_back span{
+	font-size: 12px;
+
+	padding-left:15px;
+	padding-right: 15px;
+	
+	text-align:center;
+
+
+	line-height:30px;
+}
+.foot_bottom{
+	padding-top:10px;
+	width: 700px;
+	float: left;
+
+}
+.footer_logo{
+	padding-top: 2px;
+	padding-left: 10px;
+	
+	float: left;
+}
+.foot_left{
+	font-size:5px;
+}
+.foot_right{
+	float: right;
+}
+
+
+
+
+/* 轮播图 */
+
+.home-ctn .content{
+	padding-left:600px;
+	width: 940px;
+	min-width:1053px;
+
+
+}
+.run{
+	height: 353px;
+	position:relative;
+	margin-top: 10px;
+
+
+
+}
+.run_content a{
+	height: 353px;
+	width: 940px;
+	display:block;
+	position:absolute;
+	left:0px;
+	top:0px;
+	
+}
+.main_content1{
+	width: 616px;
+	height: 353px;
+	background-image:url(../images/wallpa/capsule_616x353.jpg);
+	float: left;
+}
+.game_info{
+	width: 324px;
+	background-color:black;
+	float: right;
+	
+	
+
+}
+.info_name{
+	line-height:59px;
+	text-align:center;
+	height: 59px;
+}
+.info_content{
+	
+	height: 164px;
+}
+.info_content div{
+	float: left;
+}
+.info_content .content1{
+	background-image:url(../images/wallpa/ss_1a62fdc55b8f91a2061cfdcfe9c837af40405df7.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content2{
+	background-image:url(../images/wallpa/ss_6e7968635a5db7bb6409989ec7ed2a6c19b6c5ad.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content3{
+	margin-top: 10px;
+	background-image:url(../images/wallpa/ss_6fb1c2f1bfcb140dc506d017ef0c6f9ba1853d34.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content4{
+	margin-top: 10px;
+	background-image:url(../images/wallpa/ss_ba90b0613b8caa48a4a8ad183ff6c4e27ff62fdc.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.reason h1{
+	padding-left:10px;
+}
+.addi{
+	margin-top: 10px;
+	margin-left:10px
+}
+.addi div{
+	
+	background-color: rgba( 255, 255, 255, 0.2 );
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	text-align:center;
+	border-radius:2px;
+}
+.price{
+	margin-top: 10px;
+	margin-left:10px;
+	height: 43px;
+}
+
+/* 重叠轮播图2 */
+.main_content2{
+	width: 616px;
+	height: 353px;
+	background-image:url(../images/Dragon/capsule_616x353.jpg);
+	float: left;
+}
+.info_content .content21{
+	background-image:url(../images/Dragon/ss_31d7e02b0e7f3dcf22317a21959732b7d57f2fc4.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content22{
+	background-image:url(../images/Dragon/ss_a499cc26ac9cc7a989098c045975a7a70ab8c970.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content23{
+	margin-top: 10px;
+	background-image:url(../images/Dragon/ss_c6692793dc40cfdc3e4ae0cd359fccc250acf2b3.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content24{
+	margin-top: 10px;
+	background-image:url(../images/Dragon/ss_d6485a4ffa652e7a3f6f65580d33726a50ea55f3.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+
+/* 重叠轮播图3 */
+.main_content3{
+	width: 616px;
+	height: 353px;
+	background-image:url(../images/RAINBOWSIX/capsule_616x353.jpg);
+	float: left;
+}
+.info_content .content31{
+	background-image:url(../images/RAINBOWSIX/ss_07da51726f2eac0e97a73175618ef60389eae3e2.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content32{
+	background-image:url(../images/RAINBOWSIX/ss_891ce71ba6b2640270589687d58ef3be4b8fe044.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content33{
+	margin-top: 10px;
+	background-image:url(../images/RAINBOWSIX/ss_9350bedcb7f18819ac5e25e2cc436a10afcc2a38.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content34{
+	margin-top: 10px;
+	background-image:url(../images/RAINBOWSIX/ss_d9e0239ee7fd1ebd41ad968a06c960d804614b69.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+
+/* 重叠轮播图4 */
+.main_content4{
+	width: 616px;
+	height: 353px;
+	background-image:url(../images/RAINBOWSIX/capsule_616x353.jpg);
+	float: left;
+}
+.info_content .content41{
+	background-image:url(../images/RAINBOWSIX/ss_07da51726f2eac0e97a73175618ef60389eae3e2.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content42{
+	background-image:url(../images/RAINBOWSIX/ss_891ce71ba6b2640270589687d58ef3be4b8fe044.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content43{
+	margin-top: 10px;
+	background-image:url(../images/RAINBOWSIX/ss_9350bedcb7f18819ac5e25e2cc436a10afcc2a38.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+.info_content .content44{
+	margin-top: 10px;
+	background-image:url(../images/RAINBOWSIX/ss_d9e0239ee7fd1ebd41ad968a06c960d804614b69.600x338.jpg);
+	width: 145px;
+	height: 69px;
+	margin-left: 10px;
+	background-position:center center;
+
+}
+
+
+/* 搜索框 */
+.search_form{
+	height: 25px;
+	display:inline-block;
+	float: right;
+	position:relative;
+	width: 200px;
+
+	
+}
+
+.search{
+
+	height: 25px;
+	border:1px solid black;
+	margin-top:5px;
+
+
+}
+.search_bu{
+	float: right;
+	background:rgba( 62, 126, 167, 0.8);
+	border:none;
+	
+
+}
+
+
+.search_input{
+	
+	position:absolute;
+	top: 5px;
+	
+	border:none;
+	display:inline-block;
+	
+	background: transparent;
+	
+	
+	height: 25px;
+	line-height:25px;
+}
+
+
+
+
+
+
+
+
+
+

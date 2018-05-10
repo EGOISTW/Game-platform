@@ -1,0 +1,330 @@
+@charset "UTF-8";
+/*
+* @Author: 同
+* @Date:   2017-12-25 19:12:09
+* @Last Modified by:   同
+* @Last Modified time: 2017-12-25 19:26:59
+*/
+/*
+* @Author: admin
+* @Date:   2017-12-01 14:25:12
+* @Last Modified by:   同
+* @Last Modified time: 2017-12-20 11:09:09
+*/
+*{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	text-decoration: none;
+
+
+}
+body{
+	font-size: 14px;
+	color: #b8b6b4;
+	background: url(../images/colored_body_top2.png) center top no-repeat #1b2838;
+	height:auto;
+	position:relative;
+	min-height: 100%;
+}
+a{
+	color:#c6d4df;
+}
+/* 头部导航栏样式 */
+.header{
+	min-width: 940px;
+	background-color: #171a21;
+	font-size: 14px;
+	color: #b8b6b4;
+}
+.header .content{
+	width: 940px;
+	height: 104px;
+	margin:0px auto;
+	position:relative;
+	right:-90px;
+
+}
+.toplogo{
+	padding-top: 30px;
+	
+	float: left;
+
+
+
+}
+.menulist{
+	float: left;
+	padding-top:43px;
+
+
+}
+.menulist a{
+	padding-left: 7px;
+	color: #b8b6b4;
+
+}
+.loginmenu{
+	
+	float: right;
+	padding-top:10px;
+}
+.loginmenu span{
+	padding-left:7px;
+}
+.loginmenu a{
+	padding-left:7px;
+	color: #b8b6b4;
+
+}
+/* 内容头div */
+.container{
+	min-width:972px;
+	min-height:400px;
+	
+}
+.container .top{
+	margin:0px auto;
+	padding-left: 235px;
+	width:940px;
+	position:relative;
+}
+
+
+/* 商店导航栏样式 */
+.sotre_header{
+	height: 66px;
+	background-color:transparent;
+	margin-bottom:-8px;
+	padding-top: 24px;
+}
+.nav_area{
+	height: 35px;
+	background:rgba( 62, 126, 167, 0.8);
+	padding-left: 10px;
+	border:1px solid black;
+
+
+}
+
+/* 商店导航鼠标滑动下拉 */
+.tab_pull{
+	display:inline-block;
+	cursor: pointer;
+	border-right:1px solid black;
+	
+
+}
+.tab_pull a{
+	line-height: 34px;
+	text-align: center;
+}
+.tab_pull span{
+	display:inline-block;
+	width: 19px;
+	height: 12px;
+
+	background-image:url(../images/btn_arrow_down_padded_white.png);
+}
+
+/* 显示登录用户 */
+.login_username{
+	float: right;
+	line-height: 34px;
+	text-align: center;
+
+}
+
+/* 底部 */
+/* 垫片 */
+.footspace{
+	height: 377px;
+}
+.footer{
+	position:absolute;
+	background-color:#12212e;
+	padding:16px 0 60px 0;
+	bottom: 0;
+	left:0;
+	right:0;
+
+}
+.foot_content{
+	padding-left:142px;
+	margin:0px auto;
+	width:940px;
+}
+
+.nav_back{
+	background-color:rgba( 103, 193, 245, 0.2 );
+	margin-left: 10px;
+	border-radius: 2px;
+	height:30px;
+	display:inline-block;
+	
+
+}
+.nav_back span{
+	font-size: 12px;
+
+	padding-left:15px;
+	padding-right: 15px;
+	
+	text-align:center;
+
+
+	line-height:30px;
+}
+.foot_bottom{
+	padding-top:10px;
+	width: 700px;
+	float: left;
+
+}
+.footer_logo{
+	padding-top: 2px;
+	padding-left: 10px;
+	
+	float: left;
+}
+.foot_left{
+	font-size:5px;
+}
+.foot_right{
+	float: right;
+}
+
+
+
+
+
+/* 搜索框 */
+.search_form{
+	height: 25px;
+	display:inline-block;
+	float: right;
+	position:relative;
+	width: 200px;
+
+	
+}
+
+.search{
+
+	height: 25px;
+	border:1px solid black;
+	margin-top:5px;
+
+
+}
+.search_bu{
+	float: right;
+	background:rgba( 62, 126, 167, 0.8);
+	border:none;
+	
+
+}
+
+
+.search_input{
+	
+	position:absolute;
+	top: 5px;
+	
+	border:none;
+	display:inline-block;
+	
+	background: transparent;
+	
+	
+	height: 25px;
+	line-height:25px;
+}
+
+
+
+/* 中部主要内容 */
+/* 增加游戏 */
+/* 中部主要内容 */
+/* 登录 */
+.page_content{
+	width: 940px;
+	margin:0px auto;
+	
+}
+.page_left{
+	width: 600px;
+	overflow: hidden;
+}
+.page_login{
+	float: left;
+}
+.user{
+	margin-bottom:20px;
+}
+.user input,.password input,.email input,.real_name input{
+	border-radius:3px;
+	background-color:rgba( 0, 0, 0, 0.2 );
+	border: 1px solid #000;
+	line-height:21px;
+	height: 25px;
+	width: 270px;
+	box-shadow: 1px 1px 0px #45556c;
+	margin-top:30px;
+	color:white;
+}
+.password{
+	margin-bottom:40px;
+
+}
+.real_name{
+	margin-bottom:40px;
+}
+.form_submit{
+	border:none;
+	background-color:rgba( 103, 193, 245, 0.2 );
+	cursor:pointer;
+	border-radius:2px;
+	margin-top: 20px;
+}
+.form_submit span{
+	text-align:center;
+	line-height:35px;
+	padding-left:15px;
+	padding-right:15px;
+	
+	color:#67c1f5 !important;
+	
+}
+
+.parting{
+	border-left: 1px solid #38444e;
+	width: 2px;
+	height: 210px;
+	float: left;
+	
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/* 注册 */
+.register{
+	float: right;
+	width: 300px;
+	height: 600px;
+}
+
+.regi{
+	display:block;
+	margin-top: 92px;
+}
+
+
+
+
+
+
+
+
+
+

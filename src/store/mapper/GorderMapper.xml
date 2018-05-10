@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="store.mapper.GorderMapper" >
+  <resultMap id="BaseResultMap" type="store.pojo.Gorder" >
+    <id column="O_ID" property="oId" jdbcType="DECIMAL" />
+    <result column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="GAME_ID" property="gameId" jdbcType="DECIMAL" />
+    <result column="O_TOTALPRICE" property="oTotalprice" jdbcType="DECIMAL" />
+    <result column="O_STATUS" property="oStatus" jdbcType="DECIMAL" />
+    <result column="O_TIME" property="oTime" jdbcType="DATE" />
+    <result column="O_GROUP" property="oGroup" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    O_ID, USER_ID, GAME_ID, O_TOTALPRICE, O_STATUS, O_TIME, O_GROUP
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="store.pojo.GorderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GORDER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from GORDER
+    where O_ID = #{oId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from GORDER
+    where O_ID = #{oId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="store.pojo.GorderExample" >
+    delete from GORDER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="store.pojo.Gorder" >
+    insert into GORDER (O_ID, USER_ID, GAME_ID, 
+      O_TOTALPRICE, O_STATUS, O_TIME, 
+      O_GROUP)
+    values (#{oId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{gameId,jdbcType=DECIMAL}, 
+      #{oTotalprice,jdbcType=DECIMAL}, #{oStatus,jdbcType=DECIMAL}, #{oTime,jdbcType=DATE}, 
+      #{oGroup,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="store.pojo.Gorder" >
+    insert into GORDER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        O_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="gameId != null" >
+        GAME_ID,
+      </if>
+      <if test="oTotalprice != null" >
+        O_TOTALPRICE,
+      </if>
+      <if test="oStatus != null" >
+        O_STATUS,
+      </if>
+      <if test="oTime != null" >
+        O_TIME,
+      </if>
+      <if test="oGroup != null" >
+        O_GROUP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oId != null" >
+        #{oId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="oTotalprice != null" >
+        #{oTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="oStatus != null" >
+        #{oStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="oTime != null" >
+        #{oTime,jdbcType=DATE},
+      </if>
+      <if test="oGroup != null" >
+        #{oGroup,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="store.pojo.GorderExample" resultType="java.lang.Integer" >
+    select count(*) from GORDER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update GORDER
+    <set >
+      <if test="record.oId != null" >
+        O_ID = #{record.oId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gameId != null" >
+        GAME_ID = #{record.gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oTotalprice != null" >
+        O_TOTALPRICE = #{record.oTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oStatus != null" >
+        O_STATUS = #{record.oStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="record.oTime != null" >
+        O_TIME = #{record.oTime,jdbcType=DATE},
+      </if>
+      <if test="record.oGroup != null" >
+        O_GROUP = #{record.oGroup,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update GORDER
+    set O_ID = #{record.oId,jdbcType=DECIMAL},
+      USER_ID = #{record.userId,jdbcType=DECIMAL},
+      GAME_ID = #{record.gameId,jdbcType=DECIMAL},
+      O_TOTALPRICE = #{record.oTotalprice,jdbcType=DECIMAL},
+      O_STATUS = #{record.oStatus,jdbcType=DECIMAL},
+      O_TIME = #{record.oTime,jdbcType=DATE},
+      O_GROUP = #{record.oGroup,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="store.pojo.Gorder" >
+    update GORDER
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="gameId != null" >
+        GAME_ID = #{gameId,jdbcType=DECIMAL},
+      </if>
+      <if test="oTotalprice != null" >
+        O_TOTALPRICE = #{oTotalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="oStatus != null" >
+        O_STATUS = #{oStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="oTime != null" >
+        O_TIME = #{oTime,jdbcType=DATE},
+      </if>
+      <if test="oGroup != null" >
+        O_GROUP = #{oGroup,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where O_ID = #{oId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="store.pojo.Gorder" >
+    update GORDER
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      GAME_ID = #{gameId,jdbcType=DECIMAL},
+      O_TOTALPRICE = #{oTotalprice,jdbcType=DECIMAL},
+      O_STATUS = #{oStatus,jdbcType=DECIMAL},
+      O_TIME = #{oTime,jdbcType=DATE},
+      O_GROUP = #{oGroup,jdbcType=DECIMAL}
+    where O_ID = #{oId,jdbcType=DECIMAL}
+  </update>
+</mapper>
